@@ -1,9 +1,7 @@
 package com.danielsims.testapp.fitnessplanner.DataProviders;
 
 import android.content.Context;
-import android.content.Intent;
 
-import com.danielsims.testapp.fitnessplanner.FitnessActivity;
 import com.danielsims.testapp.fitnessplanner.Models.Module;
 
 import java.util.ArrayList;
@@ -29,9 +27,22 @@ public class DataProvider {
              "Exercise",
         "Track your exercise, fitness and weight. Some more random text to make it look like there's more than there is.",
         "Go To Exercise",
-                    new Intent(context, FitnessActivity.class)
+                    Module.ModuleType.Fitness
         ));
 
         return modules;
+    }
+
+    public List<Module> getFitnessModules(Context context){
+        List<Module> fitnessModules = new ArrayList<>();
+
+        fitnessModules.add(new Module(
+                "Workout",
+                "Create, track and perform your workouts. And some more random text.",
+                "Go To Workouts",
+                Module.ModuleType.Fitness
+        ));
+
+        return fitnessModules;
     }
 }

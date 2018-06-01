@@ -1,19 +1,19 @@
 package com.danielsims.testapp.fitnessplanner.Models;
 
-import android.content.Intent;
-
 public class Module {
+    public static enum ModuleType {
+        Fitness
+    }
     private String Title;
     private String Description;
     private String ActionName;
-    private Intent ActionIntent;
+    private ModuleType mModuleType;
 
-    public Module(String title, String description, String actionName, Intent actionIntent) {
+    public Module(String title, String description, String actionName, ModuleType moduleType) {
         Title = title;
         Description = description;
-
         ActionName = actionName;
-        ActionIntent = actionIntent;
+        mModuleType = moduleType;
 
     }
 
@@ -41,12 +41,11 @@ public class Module {
         ActionName = actionName;
     }
 
-    public Intent getActionIntent() {
-        return ActionIntent;
+    public ModuleType getModuleType() {
+        return mModuleType;
     }
 
-    public void setActionIntent(Intent actionIntent) {
-        ActionIntent = actionIntent;
+    public void setModuleType(ModuleType moduleType) {
+        mModuleType = moduleType;
     }
-
 }
