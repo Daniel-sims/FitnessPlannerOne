@@ -1,8 +1,10 @@
 package com.danielsims.testapp.fitnessplanner.Component;
 
 import com.danielsims.testapp.fitnessplanner.Fragments.ChooseModuleFragment;
+import com.danielsims.testapp.fitnessplanner.Fragments.FitnessHomeFragment;
 import com.danielsims.testapp.fitnessplanner.Module.AppModule;
 import com.danielsims.testapp.fitnessplanner.ViewModels.ChooseModuleViewModel;
+import com.danielsims.testapp.fitnessplanner.ViewModels.FitnessViewModel;
 
 import javax.inject.Singleton;
 
@@ -13,4 +15,7 @@ import dagger.Component;
 public interface AppComponent {
     void inject(ChooseModuleViewModel chooseModuleViewModel);
     void inject(ChooseModuleFragment chooseModuleFragment);
+
+    void inject(FitnessViewModel fitnessViewModel);
+    void inject(FitnessHomeFragment fitnessHomeFragment);
 }

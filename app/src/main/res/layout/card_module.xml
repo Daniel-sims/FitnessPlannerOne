@@ -27,6 +27,7 @@
                 android:layout_marginTop="8dp"
                 android:text="TextView"
                 android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/description_text_id"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
 
@@ -34,12 +35,11 @@
                 android:id="@+id/description_text_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="32dp"
                 android:layout_marginStart="8dp"
                 android:text="TextView"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/title_text_id"/>
+                app:layout_constraintBottom_toTopOf="@+id/action_text_id"
+                app:layout_constraintStart_toStartOf="parent"/>
 
             <TextView
                 android:id="@+id/action_text_id"
@@ -51,7 +51,7 @@
                 android:textColor="@color/colorPrimary"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/description_text_id"/>
+                />
         </android.support.constraint.ConstraintLayout>
 
     </android.support.v7.widget.CardView>

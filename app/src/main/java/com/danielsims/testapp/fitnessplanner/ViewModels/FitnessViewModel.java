@@ -1,25 +1,17 @@
 package com.danielsims.testapp.fitnessplanner.ViewModels;
 
 import android.arch.lifecycle.ViewModel;
-import android.content.Context;
 
 import com.danielsims.testapp.fitnessplanner.DependencyInjection.DependencyInjector;
-import com.danielsims.testapp.fitnessplanner.Models.Module;
 import com.danielsims.testapp.fitnessplanner.Repositories.DataRepository;
-
-import java.util.List;
 
 import javax.inject.Inject;
 
-public class ChooseModuleViewModel extends ViewModel {
+public class FitnessViewModel extends ViewModel {
 
     @Inject DataRepository mDataRepository;
 
-    public ChooseModuleViewModel(){
+    public FitnessViewModel(){
         DependencyInjector.getAppComponent().inject(this);
-    }
-
-    public List<Module> getModules(Context context){
-        return mDataRepository.getModules(context);
     }
 }

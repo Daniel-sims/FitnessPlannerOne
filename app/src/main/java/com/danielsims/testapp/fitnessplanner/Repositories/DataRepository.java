@@ -1,5 +1,7 @@
 package com.danielsims.testapp.fitnessplanner.Repositories;
 
+import android.content.Context;
+
 import com.danielsims.testapp.fitnessplanner.DataProviders.DataProvider;
 import com.danielsims.testapp.fitnessplanner.Models.Module;
 
@@ -12,12 +14,7 @@ public class DataRepository {
         mDataProvider = dataProvider;
     }
 
-    /*
-    This class is kind of a "middleman" between the ViewModels and the data provider, meaning you can give it
-    any kind of data provider wether it's from an API or a local database and it will work seemlessly
-     */
-
-    public List<Module> getModules(){
-        return mDataProvider.getModules();
+    public List<Module> getModules(Context context){
+        return mDataProvider.getModules(context);
     }
 }

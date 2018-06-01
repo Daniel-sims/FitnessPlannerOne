@@ -2,6 +2,7 @@ package com.danielsims.testapp.fitnessplanner.Fragments;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -54,7 +55,7 @@ public class ChooseModuleFragment extends BaseFragment<ChooseModuleViewModel> {
 
         mModulesRecyclerView.setHasFixedSize(true);
         mModulesRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mModulesRecyclerView.setAdapter(new ModulesAdapter(mViewModel.getModules()));
+        mModulesRecyclerView.setAdapter(new ModulesAdapter(mViewModel.getModules(getActivity())));
 
         return view;
     }
@@ -84,8 +85,9 @@ public class ChooseModuleFragment extends BaseFragment<ChooseModuleViewModel> {
             mModuleList = modulesList;
         }
 
+        @NonNull
         @Override
-        public ModulesAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        public ModulesAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             View itemView = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.card_module, parent, false);
 
@@ -93,13 +95,18 @@ public class ChooseModuleFragment extends BaseFragment<ChooseModuleViewModel> {
         }
 
         @Override
-        public void onBindViewHolder(ViewHolder holder, int position) {
-            Module module = mModuleList.get(position);
-            
+        public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+            final Module module = mModuleList.get(position);
+
             holder.mTitle.setText(module.getTitle());
             holder.mDescription.setText(module.getDescription());
             holder.mActionText.setText(module.getActionName());
-
+            holder.mActionText.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    startActivity(module.getActionIntent());
+                }
+            });
         }
 
         @Override
