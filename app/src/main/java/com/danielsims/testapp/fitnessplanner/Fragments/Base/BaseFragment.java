@@ -13,7 +13,7 @@ import javax.inject.Inject;
 
 public class BaseFragment<T extends ViewModel> extends Fragment {
 
-    @Inject T mViewModel;
+    @Inject protected T mViewModel;
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState){

@@ -3,19 +3,24 @@ package com.danielsims.testapp.fitnessplanner.Fragments;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.danielsims.testapp.fitnessplanner.DependencyInjection.DependencyInjector;
 import com.danielsims.testapp.fitnessplanner.Fragments.Base.BaseFragment;
 import com.danielsims.testapp.fitnessplanner.HomeActivity;
 import com.danielsims.testapp.fitnessplanner.Listeners.HomeActivityNavigationListener;
+import com.danielsims.testapp.fitnessplanner.Models.Module;
 import com.danielsims.testapp.fitnessplanner.R;
 import com.danielsims.testapp.fitnessplanner.ViewModels.ChooseModuleViewModel;
 
 import java.lang.ref.WeakReference;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,6 +28,7 @@ import butterknife.ButterKnife;
 public class ChooseModuleFragment extends BaseFragment<ChooseModuleViewModel> {
 
     @BindView(R.id.tool_bar) Toolbar mToolbar;
+    @BindView(R.id.modules_recycler_view) RecyclerView mModulesRecyclerView;
 
     public static ChooseModuleFragment newInstance(){
         return new ChooseModuleFragment();
@@ -46,6 +52,10 @@ public class ChooseModuleFragment extends BaseFragment<ChooseModuleViewModel> {
         ButterKnife.bind(this, view);
         DependencyInjector.getAppComponent().inject(this);
 
+        mModulesRecyclerView.setHasFixedSize(true);
+        mModulesRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mModulesRecyclerView.setAdapter(new ModulesAdapter(mViewModel.getModules()));
+
         return view;
     }
 
@@ -54,5 +64,47 @@ public class ChooseModuleFragment extends BaseFragment<ChooseModuleViewModel> {
         super.onActivityCreated(savedInstanceState);
 
         mToolbar.setTitle(R.string.home_activity_title);
+    }
+
+    public class ModulesAdapter extends RecyclerView.Adapter<ModulesAdapter.ViewHolder> {
+        private List<Module> mModuleList;
+
+        public class ViewHolder extends RecyclerView.ViewHolder {
+            @BindView(R.id.title_text_id) TextView mTitle;
+            @BindView(R.id.description_text_id) TextView mDescription;
+            @BindView(R.id.action_text_id) TextView mActionText;
+
+            public ViewHolder(View view) {
+                super(view);
+                ButterKnife.bind(this, view);
+            }
+        }
+
+        public ModulesAdapter(List<Module> modulesList) {
+            mModuleList = modulesList;
+        }
+
+        @Override
+        public ModulesAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            View itemView = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.card_module, parent, false);
+
+            return new ViewHolder(itemView);
+        }
+
+        @Override
+        public void onBindViewHolder(ViewHolder holder, int position) {
+            Module module = mModuleList.get(position);
+            
+            holder.mTitle.setText(module.getTitle());
+            holder.mDescription.setText(module.getDescription());
+            holder.mActionText.setText(module.getActionName());
+
+        }
+
+        @Override
+        public int getItemCount() {
+            return mModuleList.size();
+        }
     }
 }
