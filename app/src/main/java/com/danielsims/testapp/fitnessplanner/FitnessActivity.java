@@ -2,7 +2,6 @@ package com.danielsims.testapp.fitnessplanner;
 
 import android.os.Bundle;
 
-import com.danielsims.testapp.fitnessplanner.Fragments.ChooseWorkoutFragment;
 import com.danielsims.testapp.fitnessplanner.Fragments.FitnessHomeFragment;
 import com.danielsims.testapp.fitnessplanner.Listeners.FitnessActivityNavigationListener;
 
@@ -27,15 +26,7 @@ public class FitnessActivity extends BaseActivity {
     public FitnessActivityNavigationListener getFitnessActivityNavigationListener() {
         if(mFitnessActivityNavigationListener == null){
             mFitnessActivityNavigationListener = new FitnessActivityNavigationListener() {
-                @Override
-                public void goToWorkoutFragment() {
-                    onNavigateToFragment(ChooseWorkoutFragment.newInstance(), true);
-                }
-
-                @Override
-                public void goToWeightTrackerFragment() {
-
-                }
+                //Fragment navigation implementation in here
             };
         }
 

@@ -11,15 +11,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.danielsims.testapp.fitnessplanner.Adapters.ModulesAdapter;
 import com.danielsims.testapp.fitnessplanner.DependencyInjection.DependencyInjector;
 import com.danielsims.testapp.fitnessplanner.FitnessActivity;
 import com.danielsims.testapp.fitnessplanner.Fragments.Base.BaseFragment;
 import com.danielsims.testapp.fitnessplanner.HomeActivity;
 import com.danielsims.testapp.fitnessplanner.Listeners.HomeActivityNavigationListener;
-import com.danielsims.testapp.fitnessplanner.Models.Module;
 import com.danielsims.testapp.fitnessplanner.R;
-import com.danielsims.testapp.fitnessplanner.RecyclerView.Adapters.ModulesAdapter;
-import com.danielsims.testapp.fitnessplanner.RecyclerView.Listeners.OnRecyclerObjectClickListener;
 import com.danielsims.testapp.fitnessplanner.ViewModels.ChooseModuleViewModel;
 
 import java.lang.ref.WeakReference;
@@ -27,7 +25,7 @@ import java.lang.ref.WeakReference;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class ChooseModuleFragment extends BaseFragment<ChooseModuleViewModel> implements OnRecyclerObjectClickListener<Module>{
+public class ChooseModuleFragment extends BaseFragment<ChooseModuleViewModel> {
 
     @BindView(R.id.tool_bar) Toolbar mToolbar;
     @BindView(R.id.modules_recycler_view) RecyclerView mModulesRecyclerView;
@@ -57,9 +55,15 @@ public class ChooseModuleFragment extends BaseFragment<ChooseModuleViewModel> im
         mModulesRecyclerView.setHasFixedSize(true);
         mModulesRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        ModulesAdapter adapter = new ModulesAdapter(getActivity());
-        adapter.setListener(this);
-        adapter.setItems(mViewModel.getModules(getActivity()));
+        ModulesAdapter adapter = new ModulesAdapter(mViewModel.getModules(getActivity()));
+        ModulesAdapter.onActionClickedCallback callback = new ModulesAdapter.onActionClickedCallback() {
+            @Override
+            public void goToExerciseActivity() {
+                startActivity(new Intent(getActivity(), FitnessActivity.class));
+            }
+        };
+
+        adapter.setOnActionClickedCallback(callback);
         mModulesRecyclerView.setAdapter(adapter);
 
         return view;
@@ -70,13 +74,5 @@ public class ChooseModuleFragment extends BaseFragment<ChooseModuleViewModel> im
         super.onActivityCreated(savedInstanceState);
 
         mToolbar.setTitle(R.string.home_activity_title);
-    }
-
-    @Override
-    public void onItemClicked(Module item) {
-        switch(item.getModuleType()){
-            case Fitness:
-                startActivity(new Intent(getActivity(), FitnessActivity.class));
-        }
     }
 }

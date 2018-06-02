@@ -1,10 +1,8 @@
 package com.danielsims.testapp.fitnessplanner.Models;
 
 public class Module {
-    public enum ModuleType {
-        Fitness,
-        Workout,
-        WeightTracker
+    public static enum ModuleType {
+        Fitness
     }
     private String Title;
     private String Description;

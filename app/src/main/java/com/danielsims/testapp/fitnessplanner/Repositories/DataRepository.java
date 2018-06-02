@@ -17,8 +17,4 @@ public class DataRepository {
     public List<Module> getModules(Context context){
         return mDataProvider.getModules(context);
     }
-
-    public List<Module> getFitnessModules(Context context){
-        return mDataProvider.getFitnessModules(context);
-    }
 }
