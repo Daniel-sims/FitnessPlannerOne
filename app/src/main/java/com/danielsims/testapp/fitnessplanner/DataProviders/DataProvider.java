@@ -40,7 +40,14 @@ public class DataProvider {
                 "Workout",
                 "Create, track and perform your workouts. And some more random text.",
                 "Go To Workouts",
-                Module.ModuleType.Fitness
+                Module.ModuleType.Workout
+        ));
+
+        fitnessModules.add(new Module(
+                "Weight",
+                "Track your weight progress, gain or loss and I can't think of any more shit to put in here ",
+                "Go To Weight Tracker",
+                Module.ModuleType.WeightTracker
         ));
 
         return fitnessModules;

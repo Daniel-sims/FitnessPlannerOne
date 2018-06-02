@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import com.danielsims.testapp.fitnessplanner.DataProviders.DataProvider;
 import com.danielsims.testapp.fitnessplanner.Repositories.DataRepository;
 import com.danielsims.testapp.fitnessplanner.ViewModels.ChooseModuleViewModel;
+import com.danielsims.testapp.fitnessplanner.ViewModels.FitnessViewModel;
 
 import javax.inject.Singleton;
 
@@ -25,6 +26,12 @@ public class AppModule {
     @NonNull
     public ChooseModuleViewModel provideMainViewModel(){
         return new ChooseModuleViewModel();
+    }
+
+    @Provides
+    @NonNull
+    public FitnessViewModel provideFitnessViewModel(){
+        return new FitnessViewModel();
     }
 
 }
