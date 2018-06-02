@@ -11,13 +11,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.danielsims.testapp.fitnessplanner.Adapters.ModulesAdapter;
 import com.danielsims.testapp.fitnessplanner.DependencyInjection.DependencyInjector;
 import com.danielsims.testapp.fitnessplanner.FitnessActivity;
 import com.danielsims.testapp.fitnessplanner.Fragments.Base.BaseFragment;
 import com.danielsims.testapp.fitnessplanner.HomeActivity;
 import com.danielsims.testapp.fitnessplanner.Listeners.HomeActivityNavigationListener;
+import com.danielsims.testapp.fitnessplanner.Models.Module;
 import com.danielsims.testapp.fitnessplanner.R;
+import com.danielsims.testapp.fitnessplanner.RecyclerView.Adapters.ModulesAdapter;
 import com.danielsims.testapp.fitnessplanner.ViewModels.ChooseModuleViewModel;
 
 import java.lang.ref.WeakReference;

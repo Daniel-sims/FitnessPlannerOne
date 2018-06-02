@@ -1,4 +1,4 @@
-package com.danielsims.testapp.fitnessplanner.Adapters;
+package com.danielsims.testapp.fitnessplanner.RecyclerView.Adapters;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;

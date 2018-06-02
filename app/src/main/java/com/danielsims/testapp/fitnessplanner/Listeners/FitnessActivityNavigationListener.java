@@ -1,4 +1,6 @@
 package com.danielsims.testapp.fitnessplanner.Listeners;
 
-public class FitnessActivityNavigationListener {
+public interface FitnessActivityNavigationListener {
+    void goToWorkoutFragment();
+    void goToWeightTrackerFragment();
 }
