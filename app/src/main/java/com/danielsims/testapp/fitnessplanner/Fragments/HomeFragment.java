@@ -12,27 +12,26 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.danielsims.testapp.fitnessplanner.DependencyInjection.DependencyInjector;
-import com.danielsims.testapp.fitnessplanner.FitnessActivity;
+import com.danielsims.testapp.fitnessplanner.ViewModels.HomeViewModel;
+import com.danielsims.testapp.fitnessplanner.WorkoutActivity;
 import com.danielsims.testapp.fitnessplanner.Fragments.Base.BaseFragment;
 import com.danielsims.testapp.fitnessplanner.HomeActivity;
 import com.danielsims.testapp.fitnessplanner.Listeners.HomeActivityNavigationListener;
-import com.danielsims.testapp.fitnessplanner.Models.Module;
 import com.danielsims.testapp.fitnessplanner.R;
 import com.danielsims.testapp.fitnessplanner.RecyclerView.Adapters.ModulesAdapter;
-import com.danielsims.testapp.fitnessplanner.ViewModels.ChooseModuleViewModel;
 
 import java.lang.ref.WeakReference;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class ChooseModuleFragment extends BaseFragment<ChooseModuleViewModel> {
+public class HomeFragment extends BaseFragment<HomeViewModel> {
 
     @BindView(R.id.tool_bar) Toolbar mToolbar;
     @BindView(R.id.modules_recycler_view) RecyclerView mModulesRecyclerView;
 
-    public static ChooseModuleFragment newInstance(){
-        return new ChooseModuleFragment();
+    public static HomeFragment newInstance(){
+        return new HomeFragment();
     }
 
     private WeakReference<HomeActivityNavigationListener> mNavigationListener;
@@ -60,7 +59,7 @@ public class ChooseModuleFragment extends BaseFragment<ChooseModuleViewModel> {
         ModulesAdapter.onActionClickedCallback callback = new ModulesAdapter.onActionClickedCallback() {
             @Override
             public void goToExerciseActivity() {
-                startActivity(new Intent(getActivity(), FitnessActivity.class));
+                startActivity(new Intent(getActivity(), WorkoutActivity.class));
             }
         };
 

@@ -2,23 +2,33 @@ package com.danielsims.testapp.fitnessplanner.Repositories;
 
 import android.content.Context;
 
-import com.danielsims.testapp.fitnessplanner.DataProviders.DataProvider;
-import com.danielsims.testapp.fitnessplanner.Models.Module;
+import com.danielsims.testapp.fitnessplanner.Entities.Module;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class DataRepository {
-    private DataProvider mDataProvider;
+import javax.inject.Inject;
 
-    public DataRepository(DataProvider dataProvider){
-        mDataProvider = dataProvider;
+public class DataRepository {
+
+    @Inject
+    public DataRepository(){
+
     }
 
     public List<Module> getModules(Context context){
-        return mDataProvider.getModules(context);
-    }
+        List<Module> modules = new ArrayList<>();
 
-    public List<Module> getFitnessModules(Context context){
-        return mDataProvider.getFitnessModules(context);
+        modules.add(
+                new Module
+                        ("1",
+                                "Workout",
+                                "Workout",
+                                "Blah blah blah blah blah blah blah blah blah blahhhhh blah blah",
+                                "Workout",
+                                "Go Workout"
+                        ));
+
+        return modules;
     }
 }

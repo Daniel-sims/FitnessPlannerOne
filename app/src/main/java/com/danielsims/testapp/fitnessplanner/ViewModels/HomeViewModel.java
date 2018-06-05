@@ -4,19 +4,22 @@ import android.arch.lifecycle.ViewModel;
 import android.content.Context;
 
 import com.danielsims.testapp.fitnessplanner.DependencyInjection.DependencyInjector;
-import com.danielsims.testapp.fitnessplanner.Models.Module;
+import com.danielsims.testapp.fitnessplanner.Entities.Module;
 import com.danielsims.testapp.fitnessplanner.Repositories.DataRepository;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
-public class ChooseModuleViewModel extends ViewModel {
+public class HomeViewModel extends ViewModel {
 
-    @Inject DataRepository mDataRepository;
+    private final DataRepository mDataRepository;
 
-    public ChooseModuleViewModel(){
+    @Inject
+    public HomeViewModel(DataRepository dataRepository){
         DependencyInjector.getAppComponent().inject(this);
+
+        mDataRepository = dataRepository;
     }
 
     public List<Module> getModules(Context context){

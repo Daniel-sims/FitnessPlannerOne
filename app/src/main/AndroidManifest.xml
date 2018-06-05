@@ -19,7 +19,7 @@
         </activity>
 
         <activity
-            android:name=".FitnessActivity"
+            android:name=".WorkoutActivity"
             android:parentActivityName=".HomeActivity">
 
         </activity>

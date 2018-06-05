@@ -2,10 +2,9 @@ package com.danielsims.testapp.fitnessplanner.Module;
 
 import android.support.annotation.NonNull;
 
-import com.danielsims.testapp.fitnessplanner.DataProviders.DataProvider;
 import com.danielsims.testapp.fitnessplanner.Repositories.DataRepository;
-import com.danielsims.testapp.fitnessplanner.ViewModels.ChooseModuleViewModel;
-import com.danielsims.testapp.fitnessplanner.ViewModels.FitnessViewModel;
+import com.danielsims.testapp.fitnessplanner.ViewModels.HomeViewModel;
+import com.danielsims.testapp.fitnessplanner.ViewModels.WorkoutViewModel;
 
 import javax.inject.Singleton;
 
@@ -18,20 +17,19 @@ public class AppModule {
     @Provides
     @NonNull
     @Singleton
-    public DataRepository provideExerciseRepository(DataProvider dataProvider){
-        return new DataRepository(dataProvider);
+    public DataRepository provideExerciseRepository(){
+        return new DataRepository();
     }
 
     @Provides
     @NonNull
-    public ChooseModuleViewModel provideMainViewModel(){
-        return new ChooseModuleViewModel();
+    public HomeViewModel provideMainViewModel(DataRepository dataRepository){
+        return new HomeViewModel(dataRepository);
     }
 
     @Provides
     @NonNull
-    public FitnessViewModel provideFitnessViewModel(){
-        return new FitnessViewModel();
+    public WorkoutViewModel provideWorkoutViewModel(){
+        return new WorkoutViewModel();
     }
-
 }

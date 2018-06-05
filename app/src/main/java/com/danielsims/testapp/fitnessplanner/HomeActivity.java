@@ -2,7 +2,7 @@ package com.danielsims.testapp.fitnessplanner;
 
 import android.os.Bundle;
 
-import com.danielsims.testapp.fitnessplanner.Fragments.ChooseModuleFragment;
+import com.danielsims.testapp.fitnessplanner.Fragments.HomeFragment;
 import com.danielsims.testapp.fitnessplanner.Listeners.HomeActivityNavigationListener;
 
 import butterknife.ButterKnife;
@@ -19,7 +19,7 @@ public class HomeActivity extends BaseActivity {
         ButterKnife.bind(this);
 
         if(savedInstanceState == null){
-            onNavigateToFragment(ChooseModuleFragment.newInstance(), false);
+            onNavigateToFragment(HomeFragment.newInstance(), false);
         }
     }
 

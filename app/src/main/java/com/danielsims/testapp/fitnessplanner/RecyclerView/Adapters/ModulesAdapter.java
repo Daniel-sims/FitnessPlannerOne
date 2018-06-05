@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.danielsims.testapp.fitnessplanner.Models.Module;
+import com.danielsims.testapp.fitnessplanner.Entities.Module;
 import com.danielsims.testapp.fitnessplanner.R;
 
 import java.util.List;
@@ -56,14 +56,14 @@ public class ModulesAdapter extends RecyclerView.Adapter<ModulesAdapter.ViewHold
     public void onBindViewHolder(@NonNull ModulesAdapter.ViewHolder holder, int position) {
         final Module module = mModuleList.get(position);
 
-        holder.mTitle.setText(module.getTitle());
-        holder.mDescription.setText(module.getDescription());
-        holder.mActionText.setText(module.getActionName());
+        holder.mTitle.setText(module.title);
+        holder.mDescription.setText(module.description);
+        holder.mActionText.setText(module.actionName);
         holder.mActionText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                switch(module.getModuleType()){
-                    case Fitness:
+                switch(module.moduleType){
+                    case "Workout":
                         mOnActionClickedCallback.goToExerciseActivity();
                 }
             }

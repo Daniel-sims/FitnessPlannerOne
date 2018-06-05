@@ -3,7 +3,5 @@
 
     <string name="home_activity_title">Home</string>
 
-    <string name="fitness_activity_title">Fitness</string>
-
-    <string name="choose_workout_title">Choose Workout</string>
+    <string name="workout_activity_title">Workout</string>
 </resources>
